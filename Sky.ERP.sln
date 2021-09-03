@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sky.ERP.Domain", "Sky.ERP.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sky.ERP.Infrastructure", "Sky.ERP.Infrastructure\Sky.ERP.Infrastructure.csproj", "{3CF062E2-BD0A-405D-86AD-87E208C1E4B2}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "SkyERP-UI", "SkyERP-UI\SkyERP-UI.esproj", "{69D206BB-91AE-409B-A505-23778600EF08}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +27,6 @@ Global
 		{3CF062E2-BD0A-405D-86AD-87E208C1E4B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CF062E2-BD0A-405D-86AD-87E208C1E4B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CF062E2-BD0A-405D-86AD-87E208C1E4B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69D206BB-91AE-409B-A505-23778600EF08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69D206BB-91AE-409B-A505-23778600EF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69D206BB-91AE-409B-A505-23778600EF08}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{69D206BB-91AE-409B-A505-23778600EF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69D206BB-91AE-409B-A505-23778600EF08}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69D206BB-91AE-409B-A505-23778600EF08}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
