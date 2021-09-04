@@ -1,18 +1,14 @@
+import NavBar from './navbar';
 import * as React from 'react';
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import MainMenu from './main-menu';
 import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import CssBaseline from '@mui/material/CssBaseline';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import MainMenu from './main-menu';
-import Header from './header';
+import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 
 const drawerWidth = 240;
 
@@ -46,27 +42,27 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-    open?: boolean;
-}
+//interface AppBarProps extends MuiAppBarProps {
+//   open?: boolean;
+//}
 
-const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(open && {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    }),
-}));
+//const AppBar = styled(MuiAppBar, {
+//    shouldForwardProp: (prop) => prop !== 'open',
+//})<AppBarProps>(({ theme, open }) => ({
+//    zIndex: theme.zIndex.drawer + 1,
+//    transition: theme.transitions.create(['width', 'margin'], {
+//        easing: theme.transitions.easing.sharp,
+//        duration: theme.transitions.duration.leavingScreen,
+//    }),
+//    ...(open && {
+//        marginLeft: drawerWidth,
+//        width: `calc(100% - ${drawerWidth}px)`,
+//        transition: theme.transitions.create(['width', 'margin'], {
+//            easing: theme.transitions.easing.sharp,
+//            duration: theme.transitions.duration.enteringScreen,
+//        }),
+//    }),
+//}));
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -85,7 +81,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-function MiniDrawer(props: { children: string | number | boolean | {} | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactNodeArray | React.ReactPortal | null | undefined; }) {
+const Layout: React.FC = ({ children }) => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -100,7 +96,8 @@ function MiniDrawer(props: { children: string | number | boolean | {} | React.Re
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <Header onClick={handleDrawerOpen} open={open} handleDrawerOpen={handleDrawerOpen} />
+
+            <NavBar handleDrawerOpen={handleDrawerOpen} open={open} />
             {/* <AppBar position="fixed" open={open}>
                 <Toolbar>
                     <IconButton
@@ -116,7 +113,7 @@ function MiniDrawer(props: { children: string | number | boolean | {} | React.Re
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Mini variant drawer
+                        Sky ERP
                     </Typography>
                 </Toolbar>
             </AppBar> */}
@@ -131,17 +128,10 @@ function MiniDrawer(props: { children: string | number | boolean | {} | React.Re
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                {props.children}
+                {children}
             </Box>
         </Box>
     );
 }
 
-
-export default class Layout extends React.Component {
-    render() {
-        return (<MiniDrawer>
-            {this.props.children}
-        </MiniDrawer>);
-    }
-}
+export default Layout;
