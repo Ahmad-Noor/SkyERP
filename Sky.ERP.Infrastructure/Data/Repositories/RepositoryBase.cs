@@ -1,12 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sky.ERP.Domain.Base;
-using Sky.ERP.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sky.ERP.Domain.Base;
+using System.Linq.Expressions; 
+using Sky.ERP.Domain.Interfaces; 
+using Microsoft.EntityFrameworkCore;
 
 namespace Sky.ERP.Infrastructure.Data.Repositories
 {
@@ -45,6 +40,32 @@ namespace Sky.ERP.Infrastructure.Data.Repositories
         {
             _dbSet.Update(entity);
             return Task.FromResult(entity);
+        }
+
+
+        public async Task<T> GetByIdAsync(object id)
+        {
+            return await _dbSet.FindAsync(id).ConfigureAwait(false);
+        }
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync().ConfigureAwait(false);
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync<TProperty>(Expression<Func<T, TProperty>> include)
+        {
+            IQueryable<T> query = _dbSet.Include(include);
+            return await query.ToListAsync().ConfigureAwait(false);
+        }
+
+        public async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
+        }
+
+        IEnumerable<T> IAsyncRepository<T>.GetAll()
+        {
+            return _dbSet.AsEnumerable();
         }
     }
 }

@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
+using Sky.ERP.Domain.Interfaces;
+using Sky.ERP.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,12 +12,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new() { Title = "Sky.ERP.API", Version = "v1" });
-});
 
-//Enable CORS
+/*---------------------------------------------------------------------------------------------------*/
+/*                                   Enable CORS                                                     */
+/*---------------------------------------------------------------------------------------------------*/
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -28,12 +28,19 @@ builder.Services.AddCors(c =>
 //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
 //    .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
 //    = new DefaultContractResolver());
+builder.Services.AddDatabaseConectionStrings(builder.Configuration);
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-
-
-
-
-
+/*---------------------------------------------------------------------------------------------------*/
+/*                                      Swagger                                                      */
+/*---------------------------------------------------------------------------------------------------*/
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "Sky.ERP.API", Version = "v1" });
+});
+/*---------------------------------------------------------------------------------------------------*/
+/*                                 JWT AUTHENTICATION SERVICE                                        */
+/*---------------------------------------------------------------------------------------------------*/
 
 
 

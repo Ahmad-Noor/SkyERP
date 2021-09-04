@@ -12,8 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\Common\" />
-    <Folder Include="src\components\Home\" />
     <Folder Include="src\components\HR\" />
+    <Folder Include="src\components\POS\Floors\" />
+    <Folder Include="src\components\POS\Tables\" />
   </ItemGroup>
   <!-- This target is copied from the ASP.NET SPA template in order to ensure node_modules are in place. -->
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
