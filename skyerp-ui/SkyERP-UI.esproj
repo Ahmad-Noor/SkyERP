@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.1.0-alpha">
+﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.1.0-alpha">
   <PropertyGroup Label="Globals">
     <ProjectGuid>fd2ad8a3-40db-42c9-9b53-79b7dfb6e9a2</ProjectGuid>
   </PropertyGroup>
@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\Common\" />
+    <Folder Include="src\components\Home\" />
     <Folder Include="src\components\HR\" />
     <Folder Include="src\components\POS\Floors\" />
     <Folder Include="src\components\POS\Tables\" />
