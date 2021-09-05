@@ -1,6 +1,6 @@
 import NavBar from './navbar';
 import * as React from 'react';
-import MainMenu from './main-menu';
+import MainMenu from './sidebar/main-menu';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import MuiDrawer from '@mui/material/Drawer';
